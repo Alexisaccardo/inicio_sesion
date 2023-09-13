@@ -24,51 +24,51 @@ public class Iniciosesion {
 
                 case 1:
                     System.out.println("Ingrese el correo: ");
-                    String correoini = scanner.nextLine();
+                    String email = scanner.nextLine();
 
                     System.out.println("Ingrese su password: ");
                     String password = scanner.nextLine();
 
-                    Editar_sesion2(correoini, password);
+                    Editar_sesion2(email, password);
 
                     break;
 
                 case 2:
                     System.out.println("Ingrese el correo: ");
-                    correoini = scanner.nextLine();
+                    email = scanner.nextLine();
 
-                    Editar_sesion(correoini);
+                    Editar_sesion(email);
                     break;
 
                 case 3:
 
                     System.out.print("Ingrese su cedula: ");
-                    String cedula = scanner.nextLine();
+                    String identification = scanner.nextLine();
 
                     System.out.print("Ingrese su nombre: ");
-                    String nombre = scanner.nextLine();
+                    String name = scanner.nextLine();
 
                     System.out.print("Ingrese su estado: ");
-                    String estado = scanner.nextLine();
+                    String state = scanner.nextLine();
 
                     System.out.print("Ingrese su celular: ");
-                    String celular = scanner.nextLine();
+                    String cellphone = scanner.nextLine();
 
                     System.out.println("Ingrese el rango asignado: ");
-                    String rango = scanner.nextLine();
+                    String range = scanner.nextLine();
 
-                    Insert(cedula, nombre, estado, celular, rango); //
+                    Insert(identification, name, state, cellphone, range); //
 
                     break;
 
                 case 4:
                     System.out.println("Ingrese el numero de cedula: ");
-                    cedula = scanner.nextLine();
+                    identification = scanner.nextLine();
 
                     System.out.println("Actualice el estado del contrato: ");
-                    estado = scanner.nextLine();
+                    state = scanner.nextLine();
 
-                    Editar_estado(cedula, estado);
+                    Editar_estado(identification, state);
                     break;
 
                 case 5:
@@ -87,7 +87,7 @@ public class Iniciosesion {
         }
     }
 
-    private static void Editar_sesion2(String correoini, String password) throws ClassNotFoundException, SQLException {
+    private static void Editar_sesion2(String email, String password) throws ClassNotFoundException, SQLException {
         String driver2 = "com.mysql.cj.jdbc.Driver";
         String url2 = "jdbc:mysql://localhost:3306/sesion";
         String username2 = "root";
@@ -101,7 +101,7 @@ public class Iniciosesion {
         String consulta = "UPDATE usuario SET sesion = ? WHERE correo = ? AND clave = ?";
         PreparedStatement preparedStatement = connection2.prepareStatement(consulta);
         preparedStatement.setString(1, "sesion iniciada");
-        preparedStatement.setString(2, correoini);
+        preparedStatement.setString(2, email);
         preparedStatement.setString(3, password);
 
 
@@ -117,7 +117,7 @@ public class Iniciosesion {
 
     }
 
-    private static void Editar_sesion(String correoini) throws SQLException, ClassNotFoundException {
+    private static void Editar_sesion(String email) throws SQLException, ClassNotFoundException {
 
         String driver2 = "com.mysql.cj.jdbc.Driver";
         String url2 = "jdbc:mysql://localhost:3306/sesion";
@@ -132,7 +132,7 @@ public class Iniciosesion {
         String consulta = "UPDATE usuario SET sesion = ? WHERE correo = ?";
         PreparedStatement preparedStatement = connection2.prepareStatement(consulta);
         preparedStatement.setString(1, "Sesion cerrada");
-        preparedStatement.setString(2, correoini);
+        preparedStatement.setString(2, email);
 
 
         int filasActualizadas = preparedStatement.executeUpdate();
@@ -147,7 +147,7 @@ public class Iniciosesion {
 
     }
 
-    private static void Editar_estado(String cedula, String estado) throws ClassNotFoundException, SQLException {
+    private static void Editar_estado(String identification, String state) throws ClassNotFoundException, SQLException {
         String driver2 = "com.mysql.cj.jdbc.Driver";
         String url2 = "jdbc:mysql://localhost:3306/sesion";
         String username2 = "root";
@@ -160,8 +160,8 @@ public class Iniciosesion {
 
         String consulta = "UPDATE contratos SET estado = ? WHERE cedula = ?";
         PreparedStatement preparedStatement = connection2.prepareStatement(consulta);
-        preparedStatement.setString(1, estado);
-        preparedStatement.setString(2, cedula);
+        preparedStatement.setString(1, state);
+        preparedStatement.setString(2, identification);
 
 
         int filasActualizadas = preparedStatement.executeUpdate();
@@ -175,7 +175,7 @@ public class Iniciosesion {
         connection2.close();
     }
 
-    private static void Insert(String cedula, String nombre, String estado, String celular, String rango) {
+    private static void Insert(String identification, String name, String state, String cellphone, String range) {
 
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/sesion";
@@ -194,11 +194,11 @@ public class Iniciosesion {
 
             // Preparar la sentencia
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, cedula);
-            preparedStatement.setString(2, nombre);
-            preparedStatement.setString(3, estado);
-            preparedStatement.setString(4, celular);
-            preparedStatement.setString(5, rango);
+            preparedStatement.setString(1, identification);
+            preparedStatement.setString(2, name);
+            preparedStatement.setString(3, state);
+            preparedStatement.setString(4, cellphone);
+            preparedStatement.setString(5, range);
 
             // Ejecutar la sentencia
             int filasAfectadas = preparedStatement.executeUpdate();
@@ -218,7 +218,7 @@ public class Iniciosesion {
         }
     }
 
-    private static void Editar(String sesionini, String correoini) throws ClassNotFoundException, SQLException {
+    private static void Editar(String session, String email) throws ClassNotFoundException, SQLException {
         String driver2 = "com.mysql.cj.jdbc.Driver";
         String url2 = "jdbc:mysql://localhost:3306/sesion";
         String username2 = "root";
@@ -231,8 +231,8 @@ public class Iniciosesion {
 
         String consulta = "UPDATE usuario SET sesion = ? WHERE correo = ?";
         PreparedStatement preparedStatement = connection2.prepareStatement(consulta);
-        preparedStatement.setString(1, sesionini);
-        preparedStatement.setString(2, correoini);
+        preparedStatement.setString(1, session);
+        preparedStatement.setString(2, email);
 
 
         int filasActualizadas = preparedStatement.executeUpdate();
@@ -246,7 +246,7 @@ public class Iniciosesion {
         connection2.close();
     }
 
-    private static void Select_One(String correoini) throws ClassNotFoundException, SQLException {
+    private static void Select_One(String email) throws ClassNotFoundException, SQLException {
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/sesion";
         String username = "root";
@@ -258,19 +258,19 @@ public class Iniciosesion {
         String consultaSQL = "SELECT * FROM usuario WHERE correo = ?";
 
         PreparedStatement statement = connection.prepareStatement(consultaSQL);
-        statement.setString(1, correoini); // Establecer el valor del parámetro
+        statement.setString(1, email); // Establecer el valor del parámetro
 
         // Ejecutar la consulta
         ResultSet resultSet = statement.executeQuery();
 
         // Procesar el resultado si existe
         if (resultSet.next()) {
-            String correo = resultSet.getString("correo");
-            String contraseña = resultSet.getString("contraseña");
-            String sesion = resultSet.getString("sesion");
+            email = resultSet.getString("correo");
+            password = resultSet.getString("contraseña");
+            String session = resultSet.getString("sesion");
 
 
-            System.out.println("Este es su correo: " + correo + " contraseña: " + contraseña);
+            System.out.println("Este es su correo: " + email + " contraseña: " + password);
 
         } else {
             System.out.println("No se encontró un registro con el codigo especificado.");

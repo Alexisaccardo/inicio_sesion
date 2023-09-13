@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-09-2023 a las 16:05:54
+-- Tiempo de generación: 13-09-2023 a las 17:01:46
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS `contratos` (
 
 INSERT INTO `contratos` (`cedula`, `nombre`, `estado`, `celular`, `rango`) VALUES
 ('1006765', 'alexis', 'despedido', '313222334', 'administrador'),
-('10189179', 'maickel', 'despedido', '3222409850985', 'esclavo');
+('10189179', 'maickel', 'despedido', '3222409850985', 'aseador'),
+('987797098', 'juan medina', 'empleado', '312256476', 'cajero');
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`correo`, `clave`, `sesion`) VALUES
-('accardoalexis2@gmail.com', 'alexis2020', 'sesion iniciada'),
+('accardoalexis2@gmail.com', 'alexis2020', 'Sesion cerrada'),
 ('adrianamedina@gmail.com', 'adri1305', ''),
 ('luisdiaz@gmail.com', 'lucho10', '');
 COMMIT;
